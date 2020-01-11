@@ -1,0 +1,32 @@
+{
+  "listeners": {
+    "0.0.0.0:8080": {
+      "pass": "routes"
+    }
+  },
+  "applications": {
+    "main": {
+      "type": "python",
+      "module": "webapp.wsgi",
+      "environment": {
+        "PYTHONPATH": "/usr/lib/python37.zip:/usr/lib/python3.7:/usr/lib/python3.7/lib-dynload:/usr/lib/python3.7/site-packages"
+      }
+    }
+  },
+  "routes": [
+    {
+      "match": {
+        "uri": "/static/*"
+      },
+      "action": {
+        "share": "/app"
+      }
+    },
+    {
+      "action": {
+        "pass": "applications/main"
+      }
+    }
+  ]
+}
+
