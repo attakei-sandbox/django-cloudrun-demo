@@ -30,7 +30,7 @@ SECRET_KEY = 'e5fyty@l+txkn8yr@fqx2y%%!aod@)1gl%3)o=1yz%kfs05!+f'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env('DJANGO_ALLOW_HOSTS', default='').split(',')
 
 
 # Application definition
@@ -120,3 +120,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = env('DJANGO_STATIC_ROOT', default=f'{BASE_DIR}/var/static')
