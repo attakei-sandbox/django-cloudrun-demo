@@ -15,3 +15,7 @@ FROM nginx/unit:1.14.0-python3.7
 COPY --from=build /venv/lib/python3.7/site-packages/ /usr/lib/python3.7/site-packages
 COPY --from=build /app /app
 COPY container-unit/unit.config.json /docker-entrypoint.d/
+# ------------------
+# Generating config into /var/lib/unit
+# ------------------
+RUN /usr/local/bin/docker-entrypoint.sh unitd 
